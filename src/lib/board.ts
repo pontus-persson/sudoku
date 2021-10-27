@@ -56,10 +56,11 @@ class Board {
 
   solveBoard(x: number, y: number, depth: number) : boolean {
 
-    if(depth > 10000) return true;
+    if(depth > 1500) return true;
     if(x < 0 || y < 0 || x > 8 || y > 9) return true;
-    if(this.grid[x][y] !== 0) return true;
-
+    // if(this.grid[x][y] !== 0) return true;
+    if(this.isConstrained(x, y)) return false;
+    
     console.log(depth);
 
     // fix this to only have available left in section?
@@ -68,7 +69,6 @@ class Board {
     while(available.length > 0 && !solved) {
       let num = available.splice(Math.floor(Math.random() * available.length), 1);
       this.renderer.drawBoard(this);
-      console.log(num);
       this.grid[x][y] = num;
       if(
         this.solveBoard(x,y-1,depth+1) &&
@@ -80,11 +80,20 @@ class Board {
       }
     }
 
-    return false;
+    return true;
   }
 
-  isConstrained(x: number, y: number) {
-
+  isConstrained(tx: number, ty: number) : boolean {
+    if(this.grid[tx][ty] === 0) return false;
+    for (let y = 0; y < 9; y++) {
+      if(y === ty) continue;
+      if(this.grid[tx][y] === this.grid[tx][ty]) return true;
+    }
+    for (let x = 0; x < 9; x++) {
+      if(x === tx) continue;
+      if(this.grid[x][ty] === this.grid[tx][ty]) return true;
+    }
+    return false;
   }
 
 
