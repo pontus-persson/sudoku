@@ -1,9 +1,9 @@
-interface IVec2 {
+export interface IVec2 {
   x: number;
   y: number;
 }
-  
-class Vec2 {
+
+export default class Vec2 {
   x: number;
   y: number;
 
@@ -15,7 +15,7 @@ class Vec2 {
   copy() {
     return new Vec2(this.x, this.y);
   }
-  
+
   len() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   }
@@ -104,5 +104,3 @@ class Vec2 {
     }
   }
 }
-
-export default Vec2;
