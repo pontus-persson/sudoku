@@ -145,7 +145,7 @@ exports.default = Vec2;
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/khorm/projects/sudoku/src/main.ts */2);
+module.exports = __webpack_require__(/*! /home/pontus/projects/sudoku/src/main.ts */2);
 
 
 /***/ }),
